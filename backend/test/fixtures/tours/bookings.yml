@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_name: MyString
+  customer_email: MyString
+  customer_whatsapp_line: MyString
+  service_type: MyString
+  pickup_datetime: 2026-02-15 12:24:46
+  pickup_address: MyString
+  dropoff_address: MyString
+  passenger_count: 1
+  luggage_count: 1
+  flight_number: MyString
+  duration_hours: 1
+  status: 1
+  quoted_price: 9.99
+  driver: one
+
+two:
+  customer_name: MyString
+  customer_email: MyString
+  customer_whatsapp_line: MyString
+  service_type: MyString
+  pickup_datetime: 2026-02-15 12:24:46
+  pickup_address: MyString
+  dropoff_address: MyString
+  passenger_count: 1
+  luggage_count: 1
+  flight_number: MyString
+  duration_hours: 1
+  status: 1
+  quoted_price: 9.99
+  driver: two
