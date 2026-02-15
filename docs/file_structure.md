@@ -27,10 +27,10 @@ backend/
 │   ├── controllers/
 │   │   └── api/
 │   │       └── v1/
-│   │           ├── identity/
+│   │           ├── identities/
 │   │           └── tours/
 │   └── domains/
-│       ├── identity/
+│       ├── identities/
 │       │   ├── services/
 │       │   └── user.rb
 │       └── tours/
@@ -63,7 +63,7 @@ frontend/
 └── src/
     ├── api/              # Centralized API client (e.g., using axios)
     ├── features/
-    │   ├── identity/
+    │   ├── identities/
     │   │   ├── components/   # LoginForm, DriverProfile
     │   │   ├── hooks/        # useAuth
     │   │   └── types.ts      # User, AuthResponse

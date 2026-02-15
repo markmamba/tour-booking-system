@@ -23,7 +23,7 @@ This document outlines key considerations and best practices for building the Ra
 
 ## 3. Security
 
-- [ ] **Secure API Endpoints:** Create a base API controller that handles JWT authentication and provides a `current_user` object.
+- [x] **Secure API Endpoints:** Create a base API controller that handles JWT authentication and provides a `current_user` object.
 - [ ] **Run Security Audits:** Periodically run `bundle exec brakeman` and `bundle exec bundler-audit` to check for vulnerabilities.
 - [ ] **Use Strong Parameters:** Never trust user input. Whitelist all parameters in controllers.
 
