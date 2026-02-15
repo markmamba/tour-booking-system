@@ -8,11 +8,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :identities do
-        post "login", to: "auth#login"
+        post "login", controller: "auth", action: "login"
       end
 
       namespace :tours do
-        resources :bookings, only: [:index, :create, :update]
+        get 'bookings', controller: "bookings", action: "index"
+        post 'bookings', controller: "bookings", action: "create"
       end
     end
   end

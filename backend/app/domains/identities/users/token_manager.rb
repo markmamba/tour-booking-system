@@ -1,5 +1,5 @@
 module Identities
-  module Services
+  module Users
     class TokenManager
       SECRET_KEY = Rails.application.credentials.jwt_secret_key
 

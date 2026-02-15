@@ -1,4 +1,15 @@
 module Errors
+  class ValidationError < BaseError
+
+    def initialize(errors)
+      super(
+        message: "Validation failed",
+        details: errors,
+        status_code: :unprocessable_entity
+      )
+    end
+  end
+
   class AuthenticationError < BaseError
 
     def initialize(message: "Authentication failed")

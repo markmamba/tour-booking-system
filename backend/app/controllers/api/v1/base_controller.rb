@@ -10,7 +10,7 @@ module Api
       def authenticate_request
         header = request.headers["Authorization"]
         token = header.split(" ").last if header
-        decoded = ::Identities::Services::TokenManager.decode(token)
+        decoded = ::Identities::Users::TokenManager.decode(token)
 
         if decoded
           @current_user = ::Identities::User.find_by(id: decoded[:user_id])
