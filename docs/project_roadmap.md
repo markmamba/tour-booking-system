@@ -1,14 +1,15 @@
 # Project Roadmap
 
 ## Phase 1: Initialization & Setup
-- [ ] Initialize Git Repository
-- [x] Create Rails API (Backend)
-- [x] Create React + TypeScript App (Frontend)
+- [x] Initialize Git Repository
+- [x] Define API Contract & Database Schema
+- [ ] Create Rails API (Backend)
+- [ ] Create React + TypeScript App (Frontend)
 - [ ] Configure CORS and Database connection
 
 ## Phase 2: Backend Core
-- [ ] Setup Users (Drivers) Model & Authentication (JWT or Devise)
-- [ ] Setup Bookings Model & Migrations (based on DBML)
+- [ ] Setup Identity Domain (Users/Drivers)
+- [ ] Setup Tours Domain (Bookings)
 - [ ] Create API Controllers (Bookings, Auth)
 - [ ] Seed Data for testing
 

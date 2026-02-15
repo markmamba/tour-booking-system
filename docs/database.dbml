@@ -3,7 +3,7 @@ Project TourBookingSystem {
   Note: 'MVP Database Schema for Japan Tour/Transfer Booking System'
 }
 
-Table users {
+Table identities_users {
   id integer [primary key, increment]
   email varchar [not null, unique]
   password_digest varchar [not null]
@@ -14,7 +14,7 @@ Table users {
   updated_at timestamp
 }
 
-Table bookings {
+Table tours_bookings {
   id integer [primary key, increment]
 
   // Customer Details
@@ -41,7 +41,7 @@ Table bookings {
   quoted_price decimal(10,2)
 
   // Relations
-  driver_id integer [ref: > users.id, note: 'Assigned driver (optional at creation)']
+  driver_id integer [ref: > identities_users.id, note: 'Assigned driver (optional at creation)']
 
   created_at timestamp
   updated_at timestamp
