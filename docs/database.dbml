@@ -1,0 +1,48 @@
+Project TourBookingSystem {
+  database_type: 'PostgreSQL'
+  Note: 'MVP Database Schema for Japan Tour/Transfer Booking System'
+}
+
+Table users {
+  id integer [primary key, increment]
+  email varchar [not null, unique]
+  password_digest varchar [not null]
+  name varchar [not null]
+  vehicle_type varchar [note: 'e.g. Toyota Alphard, HiAce']
+  vehicle_plate_number varchar
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table bookings {
+  id integer [primary key, increment]
+
+  // Customer Details
+  customer_name varchar [not null]
+  customer_email varchar [not null]
+  customer_whatsapp_line varchar [not null, note: 'Line ID or WhatsApp number']
+
+  // Service Logic
+  service_type varchar [not null, note: "Enum: 'airport_transfer', 'hourly_tour'"]
+
+  // Logistics
+  pickup_datetime timestamp [not null]
+  pickup_address varchar [not null]
+  dropoff_address varchar [note: 'Nullable if round-trip tour']
+  passenger_count integer [default: 1]
+  luggage_count integer [default: 0]
+
+  // Specifics
+  flight_number varchar [note: 'Required if airport_transfer']
+  duration_hours integer [note: 'Required if hourly_tour']
+
+  // Status & Payment
+  status integer [default: 0, note: "0: pending, 1: confirmed, 2: completed, 3: cancelled"]
+  quoted_price decimal(10,2)
+
+  // Relations
+  driver_id integer [ref: > users.id, note: 'Assigned driver (optional at creation)']
+
+  created_at timestamp
+  updated_at timestamp
+}
