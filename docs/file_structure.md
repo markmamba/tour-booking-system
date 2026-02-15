@@ -32,9 +32,15 @@ backend/
 │   └── domains/
 │       ├── identities/
 │       │   ├── services/
+│       │   ├── managers/
+│       │   ├── requests/
+│       │   ├── validators/
 │       │   └── user.rb
 │       └── tours/
 │           ├── services/
+│           ├── managers/
+│           ├── requests/
+│           ├── validators/
 │           └── booking.rb
 ├── config/
 ├── db/
@@ -45,6 +51,9 @@ backend/
     -   **`identity/`**: Handles user authentication, profiles, and permissions.
     -   **`tours/`**: Handles the core business logic of creating and managing bookings.
     -   **`*/services/`**: Contains service objects that encapsulate specific business operations (e.g., `Tours::Services::CalculateQuote`).
+    -   **`*/managers/`**: High-level orchestrators that coordinate multiple services or handle complex flows (e.g., `Tours::Managers::BookingCreation`).
+    -   **`*/requests/`**: Data objects responsible for sanitizing, validating, and typing incoming API parameters before they reach the business logic.
+    -   **`*/validators/`**: Reusable validation rules that are too complex for standard model validations.
 
 -   **`app/controllers/api/v1/`**: All API controllers are versioned and namespaced. They are organized by domain to align with the `domains` directory. These controllers should be "thin," delegating most work to service objects.
 

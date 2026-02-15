@@ -31,4 +31,4 @@ This document outlines key considerations and best practices for building the Ra
 
 - [ ] **Versioning:** Structure all controllers under a versioned module (e.g., `Api::V1`).
 - [ ] **JSON Serialization:** Decide on a serialization strategy to format JSON output consistently (e.g., using a gem like `jsonapi-serializer` or custom presenters).
-- [ ] **Centralized Error Handling:** Use `rescue_from` in a base API controller to catch common errors (`ActiveRecord::RecordNotFound`, `ActiveRecord::RecordInvalid`) and return standardized JSON error responses.
+- [x] **Centralized Error Handling:** Follow `docs/error_handling.md` to return standardized JSON error responses.
