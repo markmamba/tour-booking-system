@@ -31,16 +31,23 @@ backend/
 │   │           └── tours/
 │   └── domains/
 │       ├── identities/
-│       │   ├── services/
-│       │   ├── managers/
-│       │   ├── requests/
-│       │   ├── validators/
+│       │   ├── users/
+│       │   │   ├── token_manager.rb
+│       │   │   ├── create_request.rb
+│       │   │   ├── create_validator.rb
+│       │   │   ├── create_manager.rb
+│       │   │   ├── update_request.rb
+│       │   │   ├── update_validator.rb
+│       │   │   └── update_manager.rb
 │       │   └── user.rb
 │       └── tours/
-│           ├── services/
-│           ├── managers/
-│           ├── requests/
-│           ├── validators/
+│           ├── bookings/
+│           │   ├── create_request.rb
+│           │   ├── create_validator.rb
+│           │   ├── create_manager.rb
+│           │   ├── update_request.rb
+│           │   ├── update_validator.rb
+│           │   └── update_manager.rb
 │           └── booking.rb
 ├── config/
 ├── db/
