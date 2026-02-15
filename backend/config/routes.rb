@@ -10,6 +10,10 @@ Rails.application.routes.draw do
       namespace :identities do
         post "login", to: "auth#login"
       end
+
+      namespace :tours do
+        resources :bookings, only: [:index, :create, :update]
+      end
     end
   end
 end

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class BaseController < ActionController::API
+    class BaseController < ApplicationController
       before_action :authenticate_request
 
       attr_reader :current_user
@@ -16,7 +16,7 @@ module Api
           @current_user = ::Identities::User.find_by(id: decoded[:user_id])
         end
 
-        render json: { error: "Unauthorized" }, status: :unauthorized unless @current_user
+        raise Errors::AuthenticationError.new unless @current_user
       end
     end
   end
