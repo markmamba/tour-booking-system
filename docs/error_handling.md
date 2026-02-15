@@ -137,14 +137,37 @@ raise Errors::InternalServerError.new("Payment processing failed")
 
 ## Controller Integration
 
-### ErrorHandler Concern
+### ApplicationController as Error Gateway
 
-All API controllers include the `Api::ErrorHandler` concern, which automatically:
+All API controllers inherit error handling through `ApplicationController`, which serves as the central gateway:
 
 1. **Rescues application errors**: Maps all custom errors to proper HTTP responses
 2. **Handles common Rails errors**: `ActiveRecord::RecordNotFound`, `ParameterMissing`
 3. **Logs unexpected errors**: Catches and logs `StandardError` as 500 responses
-4. **Provides consistent responses**: All errors follow the same JSON structure
+4. **Provides consistent responses**: All errors follow same JSON structure
+
+### Error Handling Flow
+
+```ruby
+# ApplicationController (error handling gateway)
+class ApplicationController < ActionController::API
+  rescue_from Errors::BaseError, with: :handle_application_error
+  rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
+  rescue_from ActionController::ParameterMissing, with: :handle_parameter_missing
+  rescue_from StandardError, with: :handle_standard_error
+  # ... error handling methods
+end
+
+# Api::V1::BaseController (adds authentication)
+module Api
+  module V1
+    class BaseController < ApplicationController
+      before_action :authenticate_request
+      # ... authentication logic
+    end
+  end
+end
+```
 
 ### Example Controller
 
@@ -367,9 +390,11 @@ shared/
 
 app/
 ├── controllers/
-│   └── concerns/
-│       └── api/
-│           └── error_handler.rb  # Controller error handling
+│   ├── application_controller.rb   # Central error handling gateway
+│   └── api/
+│       └── v1/
+│           ├── base_controller.rb # Authentication for API v1
+│           └── ...                # Domain-specific controllers
 └── ...
 ```
 
